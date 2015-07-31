@@ -1,24 +1,27 @@
 {
   "name": "nativescript-toast",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "description": "A NativeScript Toast Plugin for Android.",
   "main": "toast.js",
   "nativescript": {
     "platforms": {
-      "android": "1.2.0"
+      "android": "1.2.0",
+      "ios": "1.2.0"
     }
   },
   "keywords": [
     "NativeScript",
     "Toast",
-    "Notification"
+    "Notification",
+    "Android"
   ],
-  "author": "Tobias Hennig <tobias.hennig1@gmail.com>",
+  "author": "Tobias Hennig <tobias.hennig1@gmail.com> (https://github.com/TobiasHennig)",
   "repository": {
     "type": "git",
     "url": "https://github.com/TobiasHennig/nativescript-toast.git"
   },
   "bugs": {
     "url": "https://github.com/TobiasHennig/nativescript-toast/issues"
-  }
+  },
+  "license": "MIT"
 }
