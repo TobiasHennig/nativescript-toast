@@ -2,6 +2,10 @@
 
 A NativeScript Toast Plugin for Android apps.
 
+## Demo
+
+How to install and use this plugin? Watch it on [YouTube](https://www.youtube.com/watch?v=2RWtX4crzyE)!
+
 ## Installation
 
 Run the following command from the root of your project:
