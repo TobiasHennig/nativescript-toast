@@ -1,12 +1,12 @@
-[![npm version](https://badge.fury.io/js/nativescript-toast.svg)](http://badge.fury.io/js/nativescript-toast)
-
 # NativeScript Toast Plugin
 
-A NativeScript Toast Plugin for Android apps.
+> A NativeScript Toast Plugin for Android apps.
 
 ## What is a toast?
 
 > A toast provides simple feedback about an operation in a small popup. It only fills the amount of space required for the message and the current activity remains visible and interactive. - [Android Developer](http://developer.android.com/guide/topics/ui/notifiers/toasts.html)
+
+![image](showcase.png)
 
 ## Demo
 
@@ -40,3 +40,5 @@ Pass `"long"` to the `makeText` function to show the toast a bit longer.
 ```js
 Toast.makeText("Hello World", "long").show();
 ```
+
+[![npm version](https://badge.fury.io/js/nativescript-toast.svg)](http://badge.fury.io/js/nativescript-toast)
