@@ -11,4 +11,4 @@ var Toast = {
     }
 };
 
-exports.Toast = Toast;
+module.exports = Toast;
