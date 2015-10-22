@@ -1,14 +1,16 @@
-/*global exports*/
+/*global module*/
 
-var Toast = {
-    text: "",
-    makeText: function(text) {
-        this.text = text;
-        return this;
-    },
-    show: function() {
-        console.log(this.text);
-    }
+var Toast = function(){
+    this.text = '';
 };
 
-exports.Toast = Toast;
+Toast.prototype.makeText = function(text) {
+    this.text = text;
+    return this;
+};
+
+Toast.prototype.show = function() {
+    console.log(this.text);
+};
+
+module.exports = new Toast();
