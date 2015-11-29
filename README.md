@@ -12,6 +12,8 @@
 
 How to install and use this plugin? Watch it on [YouTube](https://www.youtube.com/watch?v=2RWtX4crzyE)!
 
+Want simple example application to play with? [nativescript-toast-example](https://github.com/TobiasHennig/nativescript-toast-example)
+
 ## Installation
 
 Run the following command from the root of your project:
