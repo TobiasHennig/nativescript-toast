@@ -1,16 +1,12 @@
-/*global module*/
+/*global exports*/
 
-var Toast = function(){
-    this.text = '';
+function makeText(text, duration) {
+    "use strict";
+    if (typeof (text) !== "string") {
+        throw new Error("The `text` parameter is missing.");
+    }
+    var d = (typeof (duration) === "string" && duration[0] === "l") ? 3.5 : 2;
+    return JLToast.makeText(text);
 };
 
-Toast.prototype.makeText = function(text) {
-    this.text = text;
-    return this;
-};
-
-Toast.prototype.show = function() {
-    console.log(this.text);
-};
-
-module.exports = new Toast();
+exports.makeText = makeText;

@@ -1,6 +1,6 @@
 # NativeScript Toast Plugin
 
-> A NativeScript Toast Plugin for Android apps.
+> A NativeScript Toast Plugin for Android and iOS apps.
 
 ## What is a toast?
 
