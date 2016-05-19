@@ -71,6 +71,6 @@ Custom toast
     Toast.makeText("Your Toast text", options).show();
 ```
 
-**Note**:- If a very large value is set to cornerRadius then the may not appear. The colors can also be transparent i.e #BB00796B with transparency and #00796B without 00796B.
+**Note**:- If a very large value is set to cornerRadius then the may not appear. The colors can also be transparent i.e #BB00796B with transparency and #00796B without transparency.
 
 [![npm version](https://badge.fury.io/js/nativescript-toast.svg)](http://badge.fury.io/js/nativescript-toast)
