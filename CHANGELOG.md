@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.3.0] - 2016-06-10
+### Removed
+- Drops iOS support because i'm unable to support a third-party pod
+
+### Fixed
+- #6: Issue installing the plugin on iOS
+
 ## [1.2.0] - 2015-11-29
 ### Added
 - Finally replaced the pseudo iOS version with the [CocoaPod "JLToast"](https://github.com/devxoul/JLToast) to provide a similar experience on iOS, it worked but there is no `duration` parameter at the moment [#5](https://github.com/TobiasHennig/nativescript-toast/issues/4)
