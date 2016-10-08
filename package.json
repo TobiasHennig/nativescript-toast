@@ -3,6 +3,7 @@
   "version": "1.4.0",
   "description": "A NativeScript Toast Plugin for Android and iOS apps.",
   "main": "toast.js",
+  "typings": "index.d.ts",
   "scripts": {
     "clean": "rm -rf node_modules hooks target tmp && mkdir tmp",
     "test": "cd tmp && tns create my-test-app --ng && cd my-test-app && rm -rf platforms node_modules hooks && tns plugin add ../.. && tns install && tns build ios && tns build android",
