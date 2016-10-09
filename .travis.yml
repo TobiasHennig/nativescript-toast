@@ -25,7 +25,7 @@ before_install:
   - PATH="`npm bin`:`npm bin -g`:$PATH"
   - brew update > /dev/null;
   - brew install android-sdk dash gnu-sed jpeg python3;
-  - echo y | android --verbose update sdk --no-ui --all --filter platform-tools,build-tools-24.0.2;
+  - echo y | android --verbose update sdk --no-ui --all --filter android-22,platform-tools,build-tools-24.0.2,build-tools-22.0.5;
   - npm install -g npm
   - npm install -g nativescript
   - npm install
