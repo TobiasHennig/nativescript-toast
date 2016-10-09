@@ -7,7 +7,6 @@ env:
   - NODE_VERSION="4"
   - NODE_VERSION="5"
   - NODE_VERSION="6"
-  - ANDROID_HOME=/usr/local/opt/android-sdk
 
 licenses:
   - 'android-sdk-preview-license-52d11cd2'
@@ -17,6 +16,7 @@ script:
   - npm run clean
   - npm run test
 before_install:
+  - export ANDROID_HOME=/usr/local/opt/android-sdk
   - wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
   - source ~/.nvm/nvm.sh && nvm install $NODE_VERSION && nvm use $NODE_VERSION
   - PATH="`npm bin`:`npm bin -g`:$PATH"
@@ -29,3 +29,4 @@ before_install:
   # Output useful info for debugging
   - node --version
   - npm --version
+  - pod repo update
