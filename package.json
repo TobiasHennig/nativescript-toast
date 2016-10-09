@@ -6,7 +6,7 @@
   "typings": "index.d.ts",
   "scripts": {
     "clean": "rm -rf node_modules hooks target tmp && mkdir tmp",
-    "test": "cd tmp && tns create my-test-app --ng && cd my-test-app && rm -rf platforms node_modules hooks && tns plugin add ../.. && tns install && tns build ios && tns build android",
+    "test": "cd tmp && tns create my-test-app --ng && cd my-test-app && rm -rf platforms node_modules hooks && tns plugin add ../.. && tns install && tns build ios && tns build android"
   },
   "nativescript": {
     "platforms": {
