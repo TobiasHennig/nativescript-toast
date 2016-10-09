@@ -26,7 +26,15 @@ before_install:
   - npm install -g npm
   - npm install -g nativescript
   - npm install
-  # Output useful info for debugging
+  # CocoaPods
+  - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
+  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+  - pod --version
+  - pod setup --silent > /dev/null
+  - pod repo update --silent
+  # Show environment invo
   - node --version
   - npm --version
-  - pod repo update
+  - xcpretty --version
+  - xcodebuild -version
+  - xcodebuild -showsdks
