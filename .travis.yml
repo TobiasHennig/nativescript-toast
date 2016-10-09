@@ -13,10 +13,13 @@ licenses:
   - 'android-sdk-license-.+'
 
 script:
+  - export ANDROID_HOME=/usr/local/opt/android-sdk
+  - export PATH=$PATH:/usr/local/opt/android-sdk/tools:/usr/local/opt/android-sdk/platform-tools
   - npm run clean
   - npm run test
 before_install:
   - export ANDROID_HOME=/usr/local/opt/android-sdk
+  - export PATH=$PATH:/usr/local/opt/android-sdk/tools:/usr/local/opt/android-sdk/platform-tools
   - wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
   - source ~/.nvm/nvm.sh && nvm install $NODE_VERSION && nvm use $NODE_VERSION
   - PATH="`npm bin`:`npm bin -g`:$PATH"
@@ -38,3 +41,4 @@ before_install:
   - xcpretty --version
   - xcodebuild -version
   - xcodebuild -showsdks
+  - echo $ANDROID_HOME
