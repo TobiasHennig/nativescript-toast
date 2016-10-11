@@ -1,6 +1,11 @@
 # NativeScript Toast Plugin
 
-> A NativeScript Toast Plugin for Android apps.
+[![Build Status](https://travis-ci.org/TobiasHennig/nativescript-toast.svg?branch=master)](https://travis-ci.org/TobiasHennig/nativescript-toast)
+ [![npm version](https://badge.fury.io/js/nativescript-toast.svg)](http://badge.fury.io/js/nativescript-toast)
+
+> A NativeScript Toast Plugin for Android and iOS apps.
+
+[![NPM](https://nodei.co/npm/nativescript-toast.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/nativescript-toast/)
 
 ## What is a toast?
 
