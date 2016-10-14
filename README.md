@@ -27,6 +27,12 @@ Run the following command from the root of your project:
 $ tns plugin add nativescript-toast
 ```
 
+Or the develop version, which may **not working** completly:
+
+```
+$ tns plugin add nativescript-toast@next
+```
+
 ## Usage
 
 ```js
