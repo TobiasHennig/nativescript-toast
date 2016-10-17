@@ -43,6 +43,16 @@ var Toast = require("nativescript-toast");
 var toast = Toast.makeText("Hello World");
 toast.show();
 ```
+Or via import:
+
+```js
+import * as Toast from 'nativescript-toast';
+
+// ...
+
+var toast = Toast.makeText("Hello World");
+toast.show();
+```
 
 It is also possible to chain the methods.
 ```js
