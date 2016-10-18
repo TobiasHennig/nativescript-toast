@@ -5,8 +5,10 @@
   "main": "toast.js",
   "typings": "index.d.ts",
   "scripts": {
-    "clean": "rm -rf node_modules hooks target tmp && mkdir tmp",
-    "test": "cd tmp && tns create my-test-app --ng && cd my-test-app && rm -rf platforms node_modules hooks && tns plugin add ../.. && tns install && tns build ios && tns build android"
+    "clean": "git checkout samples/angular/package.json && rm -rf node_modules target tmp && mkdir tmp && cd samples/angular && rm -rf node_modules hooks platforms",
+    "test": "cd tmp && tns create my-test-app --ng && cd my-test-app && rm -rf platforms node_modules hooks && tns plugin add ../.. && tns install && tns build ios && tns build android",
+    "pre-e2e":"cd samples/angular && tns install && tns platform add ios && tns platform add android && tns build ios && tns build android",
+    "e2e":"cd samples/angular && tns test ios"
   },
   "nativescript": {
     "platforms": {

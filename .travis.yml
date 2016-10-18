@@ -17,6 +17,8 @@ script:
   - export PATH=$PATH:/usr/local/opt/android-sdk/tools:/usr/local/opt/android-sdk/platform-tools
   - npm run clean
   - npm run test
+  - npm run pre-e2e
+  - npm run e2e
 before_install:
   - export ANDROID_HOME=/usr/local/opt/android-sdk
   - export PATH=$PATH:/usr/local/opt/android-sdk/tools:/usr/local/opt/android-sdk/platform-tools

@@ -22,11 +22,18 @@ node('nativescript') {
         }
 
         stage('Build') {
+            sh "npm run clean"
             sh "npm install"
         }
 
         stage('Test') {
-            sh "npm run clean"
+            //sh "npm run test"
+            //junit 'test/android/build/reports/TEST-*.xml'
+        }
+
+        stage('E2E') {
+            sh "npm run pre-e2e"
+            sh "npm run e2e"
             //sh "npm run test"
             //junit 'test/android/build/reports/TEST-*.xml'
         }

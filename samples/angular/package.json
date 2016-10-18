@@ -1,0 +1,36 @@
+{
+  "description": "NativeScript Application",
+  "license": "SEE LICENSE IN <your-license-filename>",
+  "readme": "NativeScript Application",
+  "repository": "<fill-your-repository-here>",
+  "nativescript": {
+    "id": "org.nativescript.toastdemoapp"
+  },
+  "dependencies": {
+    "@angular/common": "^2.1.0",
+    "@angular/compiler": "^2.1.0",
+    "@angular/core": "^2.1.0",
+    "@angular/forms": "^2.1.0",
+    "@angular/http": "^2.1.0",
+    "@angular/platform-browser": "^2.1.0",
+    "@angular/platform-browser-dynamic": "^2.1.0",
+    "@angular/router": "^3.1.0",
+    "nativescript-angular": "^1.1.0",
+    "nativescript-toast": "^1.4.0-6",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "^5.0.0-rc.1",
+    "tns-core-modules": "^2.3.0",
+    "zone.js": "^0.6.25"
+  },
+  "devDependencies": {
+    "@types/jasmine": "2.2.29",
+    "jasmine-core": "2.4.1",
+    "karma": "1.3.0",
+    "karma-jasmine": "1.0.2",
+    "karma-junit-reporter": "1.1.0",
+    "karma-nativescript-launcher": "0.4.0",
+    "karma-typescript-preprocessor": "0.2.1",
+    "nativescript-dev-typescript": "^0.3.2",
+    "typescript": "2.0.3"
+  }
+}

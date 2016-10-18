@@ -31,3 +31,11 @@ node_modules
 # IDE files
 .project
 .idea/
+
+# generated files and folders
+samples/angular/app/*.js*
+samples/angular/app/tests/*.js*
+samples/angular/hooks/
+samples/angular/lib/
+samples/angular/node_modules/
+samples/angular/platforms/
