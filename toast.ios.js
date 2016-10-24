@@ -6,7 +6,7 @@ function makeText(text, duration) {
         throw new Error("The `text` parameter is missing.");
     }
     var d = (typeof (duration) === "string" && duration[0] === "l") ? 3.5 : 2;
-    return Toaster(text);
+    return Toast(text);
 }
 
 exports.makeText = makeText;
