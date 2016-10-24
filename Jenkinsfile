@@ -27,15 +27,14 @@ node('nativescript') {
         }
 
         stage('Test') {
-            //sh "npm run test"
-            //junit 'test/android/build/reports/TEST-*.xml'
+            sh "npm run test"
+            junit 'test/android/build/reports/TEST-*.xml'
         }
 
         stage('E2E') {
             sh "npm run pre-e2e"
             sh "npm run e2e"
-            //sh "npm run test"
-            //junit 'test/android/build/reports/TEST-*.xml'
+            junit 'tmp/TEST-*.xml'
         }
 
         stage('Publish NPM snapshot') {

@@ -4,7 +4,13 @@
   "readme": "NativeScript Application",
   "repository": "<fill-your-repository-here>",
   "nativescript": {
-    "id": "org.nativescript.toastdemoapp"
+    "id": "org.nativescript.toastdemoapp",
+    "tns-ios": {
+      "version": "2.4.0-2016-9-28-1"
+    },
+    "tns-android": {
+      "version": "2.4.0-next-2016-10-18-1276"
+    }
   },
   "dependencies": {
     "@angular/common": "^2.1.0",
@@ -17,6 +23,7 @@
     "@angular/router": "^3.1.0",
     "nativescript-angular": "^1.1.0",
     "nativescript-toast": "^1.4.0-6",
+    "nativescript-unit-test-runner": "0.3.3",
     "reflect-metadata": "^0.1.8",
     "rxjs": "^5.0.0-rc.1",
     "tns-core-modules": "^2.3.0",
