@@ -1,3 +1,13 @@
+<a name="1.4.0"></a>
+# 1.4.0 (2016-11-06)
+
+
+### Bug Fixes
+
+* **#15:** Fix ios call ([9cf55f5](https://github.com/TobiasHennig/nativescript-toast/commit/9cf55f5))
+
+
+
 <a name="1.3.0"></a>
 # 1.3.0 (2016-06-10)
 
