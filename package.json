@@ -7,8 +7,13 @@
   "scripts": {
     "clean": "git checkout samples/angular/package.json && rm -rf node_modules target tmp && mkdir tmp && cd samples/angular && rm -rf node_modules hooks platforms",
     "test": "cd tmp && tns create my-test-app --ng && cd my-test-app && rm -rf platforms node_modules hooks && tns plugin add ../.. && tns install && tns build ios && tns build android",
-    "pre-e2e":"cd samples/angular && tns install && tns platform add ios && tns platform add android && tns build ios && tns build android",
-    "e2e":"cd samples/angular && tns test ios --emulator --justlaunch"
+    "pre-e2e": "cd samples/angular && tns install && tns platform add ios && tns platform add android && tns build ios && tns build android",
+    "e2e": "cd samples/angular && tns test ios --emulator --justlaunch",
+    "changelog":" conventional-changelog -p angular -i CHANGELOG.md -s",
+    "release": "npm run build && npm run test && npm run changelog && git add CHANGELOG.md"
+  },
+  "devDependencies": {
+    "conventional-changelog": "1.1.0"
   },
   "nativescript": {
     "platforms": {
