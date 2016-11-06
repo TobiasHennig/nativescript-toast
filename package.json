@@ -5,8 +5,8 @@
   "main": "toast.js",
   "typings": "index.d.ts",
   "scripts": {
-    "clean": "git checkout samples/angular/package.json && rm -rf node_modules target tmp && mkdir tmp && cd samples/angular && rm -rf node_modules hooks platforms",
-    "test": "cd tmp && tns create my-test-app --ng && cd my-test-app && rm -rf platforms node_modules hooks && tns plugin add ../.. && tns install && tns build ios && tns build android",
+    "clean": "git checkout samples/angular/package.json && rm -rf node_modules target tmp && mkdir -p tmp && mkdir -p tmp/angular && cd samples/angular && rm -rf node_modules hooks platforms",
+    "test": "cd tmp/angular && cp -rp ../../samples/angular/* . && rm -rf platforms node_modules hooks && tns plugin add ../.. && tns install && tns build ios && tns build android",
     "pre-e2e": "cd samples/angular && tns install && tns platform add ios && tns platform add android && tns build ios && tns build android",
     "e2e": "cd samples/angular && tns test ios --emulator --justlaunch",
     "changelog":" conventional-changelog -p angular -i CHANGELOG.md -s",
