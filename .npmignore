@@ -1,5 +1,9 @@
+.travis.yml
+Jenkinsfile
+*.png
 .idea/
 node_modules/
 samples/npm-debug.log
 tmp/
 test/
+samples/
