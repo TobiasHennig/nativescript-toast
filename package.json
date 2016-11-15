@@ -1,6 +1,6 @@
 {
   "name": "nativescript-toast",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A NativeScript Toast Plugin for Android and iOS apps.",
   "main": "toast.js",
   "typings": "index.d.ts",
@@ -9,7 +9,8 @@
     "test": "cd tmp/angular && cp -rp ../../samples/angular/* . && rm -rf platforms node_modules hooks && tns plugin add ../.. && tns install && tns build ios && tns build android",
     "pre-e2e": "cd samples/angular && tns install && tns platform add ios && tns platform add android && tns build ios && tns build android",
     "e2e": "cd samples/angular && tns test ios --emulator --justlaunch",
-    "changelog":" conventional-changelog -p angular -i CHANGELOG.md -s",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "changelog:add": "git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md'",
     "release:pre": "npm run clean && npm run test",
     "release:post": "npm run changelog && npm run changelog:add",
     "release:major": "npm run release:pre && npm version major && npm run release:post && git push origin && git push origin --tags && npm publish",
