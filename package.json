@@ -17,6 +17,7 @@
     "release:minor": "npm run release:pre && npm version minor && npm run release:post && git push origin && git push origin --tags && npm publish",
     "release:patch": "npm run release:pre && npm version patch && npm run release:post && git push origin && git push origin --tags && npm publish"
   },
+  "dependencies": {},
   "devDependencies": {
     "conventional-changelog-cli": "1.2.0"
   },
@@ -40,8 +41,5 @@
   "bugs": {
     "url": "https://github.com/TobiasHennig/nativescript-toast/issues"
   },
-  "license": "MIT",
-  "dependencies": {
-    "conventional-changelog-cli": "^1.2.0"
-  }
+  "license": "MIT"
 }
