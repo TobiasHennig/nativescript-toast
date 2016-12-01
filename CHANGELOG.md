@@ -1,3 +1,13 @@
+<a name="1.4.3"></a>
+## [1.4.3](https://github.com/TobiasHennig/nativescript-toast/compare/9cf55f5...v1.4.3) (2016-12-01)
+
+
+### Bug Fixes
+
+* **#15:** Fix ios call ([9cf55f5](https://github.com/TobiasHennig/nativescript-toast/commit/9cf55f5))
+* **publish:** ignore not needed artifacts ([12b3240](https://github.com/TobiasHennig/nativescript-toast/commit/12b3240)), closes [#16](https://github.com/TobiasHennig/nativescript-toast/issues/16)
+
+
 <a name="1.4.1"></a>
 ## 1.4.1 (2016-11-15)
 
@@ -70,3 +80,4 @@
 <a name="1.0.0"></a>
 # 1.0.0 (2015-07-30)
 Initial release
+
