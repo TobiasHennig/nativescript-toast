@@ -1,6 +1,6 @@
 {
   "name": "nativescript-toast",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "A NativeScript Toast Plugin for Android and iOS apps.",
   "main": "toast.js",
   "typings": "index.d.ts",
@@ -40,5 +40,8 @@
   "bugs": {
     "url": "https://github.com/TobiasHennig/nativescript-toast/issues"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "conventional-changelog-cli": "^1.2.0"
+  }
 }
