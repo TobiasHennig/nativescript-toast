@@ -1,9 +1,9 @@
-/// <reference path="../../node_modules/@types/jasmine/index.d.ts" />
-import {inject, TestBed} from "@angular/core/testing";
-import {NativeScriptModule} from "nativescript-angular/platform";
-import * as appSettings from "application-settings";
-import {Page} from "ui/page";
-import {AppComponent} from "../app.component";
+/// <reference path='../../node_modules/@types/jasmine/index.d.ts' />
+import {inject, TestBed} from '@angular/core/testing';
+import {NativeScriptModule} from 'nativescript-angular/platform';
+import * as appSettings from 'application-settings';
+import {Page} from 'ui/page';
+import {AppComponent} from '../app.component';
 
 describe('LoginComponent', () => {
 
