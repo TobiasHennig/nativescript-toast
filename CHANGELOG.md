@@ -1,3 +1,11 @@
+<a name="1.4.4"></a>
+## [1.4.4](https://github.com/TobiasHennig/nativescript-toast/compare/v1.4.3...v1.4.4) (2017-01-03)
+
+### Feature
+
+* **#19:** Center-align text on Android
+
+
 <a name="1.4.3"></a>
 ## [1.4.3](https://github.com/TobiasHennig/nativescript-toast/compare/9cf55f5...v1.4.3) (2016-12-01)
 
