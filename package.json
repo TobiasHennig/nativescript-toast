@@ -2,7 +2,7 @@
   "name": "nativescript-toast",
   "version": "1.4.4",
   "description": "A NativeScript Toast Plugin for Android and iOS apps.",
-  "main": "toast.js",
+  "main": "toast",
   "typings": "index.d.ts",
   "scripts": {
     "clean": "git checkout samples/angular/package.json && rm -rf node_modules target tmp && mkdir -p tmp && mkdir -p tmp/angular && cd samples/angular && rm -rf node_modules hooks platforms",
