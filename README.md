@@ -64,4 +64,9 @@ Pass `"long"` to the `makeText` function to show the toast a bit longer.
 Toast.makeText("Hello World", "long").show();
 ```
 
+## Development
+
+* Android SDK
+* Xcode 8+
+
 [![npm version](https://badge.fury.io/js/nativescript-toast.svg)](http://badge.fury.io/js/nativescript-toast)
