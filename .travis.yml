@@ -1,46 +1,80 @@
 os: osx
-osx_image: xcode8
+osx_image: xcode8.3
 sudo: false
 language: objective-c
 
 env:
-  - NODE_VERSION="4"
-  - NODE_VERSION="5"
-  - NODE_VERSION="6"
+  global:
+    - API=19 # Google API 19 by default
+    - TAG=google_apis # Google APIs by default, alternatively use default
+    - ABI=armeabi-v7a # ARM ABI v7a by default
+  matrix:
+    - NODE_VERSION="6" NPM_VERSION="3" TNS_VERSION="2.5.5"
+    - NODE_VERSION="7" NPM_VERSION="3" TNS_VERSION="2.5.5"
+    - NODE_VERSION="7" NPM_VERSION="4" TNS_VERSION="2.5.5"
+    - NODE_VERSION="6" NPM_VERSION="3" TNS_VERSION="3.0.3"
+    - NODE_VERSION="6" NPM_VERSION="3" TNS_VERSION="3.0.3"
+    - NODE_VERSION="7" NPM_VERSION="4" TNS_VERSION="3.0.3"
+    - NODE_VERSION="6" NPM_VERSION="3" TNS_VERSION="3"
+    - NODE_VERSION="6" NPM_VERSION="3" TNS_VERSION="3"
+    - NODE_VERSION="7" NPM_VERSION="4" TNS_VERSION="3"
 
-licenses:
-  - 'android-sdk-preview-license-52d11cd2'
-  - 'android-sdk-license-.+'
-
-script:
-  - export ANDROID_HOME=/usr/local/opt/android-sdk
-  - export PATH=$PATH:/usr/local/opt/android-sdk/tools:/usr/local/opt/android-sdk/platform-tools
-  - npm run clean
-  - npm run test
-  #- npm run pre-e2e
-  #- npm run e2e
 before_install:
-  - export ANDROID_HOME=/usr/local/opt/android-sdk
-  - export PATH=$PATH:/usr/local/opt/android-sdk/tools:/usr/local/opt/android-sdk/platform-tools
+  - export EMULATOR="system-images;android-${API};${TAG};${ABI}" # Used to install/create emulator
+  - export ANDROID_HOME=/usr/local/share/android-sdk
+  - export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
   - wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
   - source ~/.nvm/nvm.sh && nvm install $NODE_VERSION && nvm use $NODE_VERSION
   - PATH="`npm bin`:`npm bin -g`:$PATH"
   - brew update > /dev/null;
-  - brew install android-sdk dash gnu-sed jpeg python3;
-  - echo y | android update sdk --filter tools,platform-tools,android-23,build-tools-23.0.3,extra-android-m2repository,extra-google-m2repository,extra-android-support --all --no-ui;
-  - npm install -g npm
-  - npm install -g nativescript
-  - npm install
+  - brew install Caskroom/cask/android-sdk
+  # Tools
+  - echo y | sdkmanager 'tools'
+  # Platform tools
+  - echo y | sdkmanager 'platform-tools'
+  # SDKs
+  - echo y | sdkmanager 'platforms;android-25'
+  # build tools
+  - echo y | sdkmanager 'build-tools;25.0.2'
+  # Android System Images, for emulators
+  - echo y | sdkmanager 'system-images;android-24;default;armeabi-v7a'
+  - echo y | sdkmanager 'system-images;android-22;default;armeabi-v7a'
+  - echo y | sdkmanager 'system-images;android-21;default;armeabi-v7a'
+  - echo y | sdkmanager 'system-images;android-19;default;armeabi-v7a'
+  - echo y | sdkmanager 'system-images;android-19;google_apis;armeabi-v7a'
+  # Extras
+  - echo y | sdkmanager 'extras;android;m2repository'
+  - echo y | sdkmanager 'extras;google;google_play_services'
+  - echo y | sdkmanager 'extras;google;m2repository'
+  # google apis
+  - echo y | sdkmanager 'add-ons;addon-google_apis-google-23'
+  - mkdir "$ANDROID_HOME/licenses" || true
+  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+  # create and start emulator
+  - echo no | avdmanager create avd --name test -k "$EMULATOR" -f --abi "$ABI" --tag "$TAG"
+  - emulator -avd test -gpu off -skin 768x1280 -no-window &
   # CocoaPods
   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
   - pod --version
   - pod setup --silent
   - pod repo update --silent
-  # Show environment invo
+  # Build Tools
+  - npm install -g npm@$NPM_VERSION
+  - npm install -g nativescript@$TNS_VERSION
+  - tns usage-reporting disable
+  - tns error-reporting disable
+  # Show environment info
   - node --version
   - npm --version
   - xcpretty --version
   - xcodebuild -version
   - xcodebuild -showsdks
   - echo $ANDROID_HOME
+
+script:
+  - npm run clean
+  - npm run build
+  - npm run test
+ # - npm run e2e
