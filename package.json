@@ -1,45 +1,45 @@
 {
-    "name": "nativescript-toast",
-    "version": "1.4.5",
-    "description": "A NativeScript Toast Plugin for Android and iOS apps.",
-    "main": "toast",
-    "typings": "index.d.ts",
-    "scripts": {
-        "clean": "git checkout samples/angular/package.json && rm -rf node_modules target tmp && mkdir -p tmp && mkdir -p tmp/angular && cd samples/angular && rm -rf node_modules hooks platforms",
-        "test": "cd tmp/angular && cp -rp ../../samples/angular/* . && rm -rf platforms node_modules hooks && tns plugin add ../.. && tns install && tns build ios && tns build android",
-        "pre-e2e": "cd samples/angular && tns install && tns platform add ios && tns platform add android && tns build ios && tns build android",
-        "e2e": "cd samples/angular && tns test ios --emulator --justlaunch",
-        "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-        "changelog:add": "git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md'",
-        "release:pre": "npm run clean && npm run test",
-        "release:post": "npm run changelog && npm run changelog:add",
-        "release:major": "npm run release:pre && npm version major && npm run release:post && git push origin && git push origin --tags && npm publish",
-        "release:minor": "npm run release:pre && npm version minor && npm run release:post && git push origin && git push origin --tags && npm publish",
-        "release:patch": "npm run release:pre && npm version patch && npm run release:post && git push origin && git push origin --tags && npm publish"
-    },
-    "dependencies": {},
-    "devDependencies": {
-        "conventional-changelog-cli": "1.2.0"
-    },
-    "nativescript": {
-        "platforms": {
-            "android": "1.3.0",
-            "ios": "1.3.0"
-        }
-    },
-    "keywords": [
-        "NativeScript",
-        "Toast",
-        "Notification",
-        "Android"
-    ],
-    "author": "Tobias Hennig <tobias.hennig1@gmail.com> (https://github.com/TobiasHennig)",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/TobiasHennig/nativescript-toast.git"
-    },
-    "bugs": {
-        "url": "https://github.com/TobiasHennig/nativescript-toast/issues"
-    },
-    "license": "MIT"
+  "name": "nativescript-toast",
+  "version": "1.4.6",
+  "description": "A NativeScript Toast Plugin for Android and iOS apps.",
+  "main": "toast",
+  "typings": "index.d.ts",
+  "scripts": {
+    "clean": "git checkout samples/angular/package.json && rm -rf node_modules target tmp && mkdir -p tmp && mkdir -p tmp/angular && cd samples/angular && rm -rf node_modules hooks platforms",
+    "test": "cd tmp/angular && cp -rp ../../samples/angular/* . && rm -rf platforms node_modules hooks && tns plugin add ../.. && tns install && tns build ios && tns build android",
+    "pre-e2e": "cd samples/angular && tns install && tns platform add ios && tns platform add android && tns build ios && tns build android",
+    "e2e": "cd samples/angular && tns test ios --emulator --justlaunch",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "changelog:add": "git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md'",
+    "release:pre": "npm run clean && npm run test",
+    "release:post": "npm run changelog && npm run changelog:add",
+    "release:major": "npm run release:pre && npm version major && npm run release:post && git push origin && git push origin --tags && npm publish",
+    "release:minor": "npm run release:pre && npm version minor && npm run release:post && git push origin && git push origin --tags && npm publish",
+    "release:patch": "npm run release:pre && npm version patch && npm run release:post && git push origin && git push origin --tags && npm publish"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "conventional-changelog-cli": "1.2.0"
+  },
+  "nativescript": {
+    "platforms": {
+      "android": "1.3.0",
+      "ios": "1.3.0"
+    }
+  },
+  "keywords": [
+    "NativeScript",
+    "Toast",
+    "Notification",
+    "Android"
+  ],
+  "author": "Tobias Hennig <tobias.hennig1@gmail.com> (https://github.com/TobiasHennig)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TobiasHennig/nativescript-toast.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TobiasHennig/nativescript-toast/issues"
+  },
+  "license": "MIT"
 }
