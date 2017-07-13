@@ -42,6 +42,6 @@ declare module 'nativescript-toast' {
     setDuration(duration: Number): void;
   }
 
-  export function makeText(text: string, duration?: duration): Toast;
+  export function makeText(text: string, duration?: string): Toast;
 
 }
