@@ -3,17 +3,16 @@ properties properties: [
         [$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/TobiasHennig/nativescript-toast/'],
 ]
 
+@Library('mare-build-library')
+def nodeJS = new de.mare.ci.jenkins.NodeJS()
+def git = new de.mare.ci.jenkins.Git()
+
 node('nativescript') {
-    def buildNumber = env.BUILD_NUMBER
-    def mvnHome = '/opt/dev/apache-maven-3.3.1'
+
     def workspace = env.WORKSPACE
-    def buildUrl = env.BUILD_URL
-    env.PATH = "${env.JAVA_HOME}/bin:${mvnHome}/bin:${env.PATH}"
 
     // PRINT ENVIRONMENT TO JOB
     echo "workspace directory is $workspace"
-    echo "build URL is $buildUrl"
-    echo "build Number is $buildNumber"
     echo "PATH is $env.PATH"
 
     try {
@@ -22,25 +21,23 @@ node('nativescript') {
         }
 
         stage('Build') {
-            sh "npm run clean"
-            sh "npm install"
+            nodeJS.nvmRun('clean')
         }
 
         stage('Test') {
-            sh "npm run test"
+            nodeJS.nvmRun('test')
             junit 'test/android/build/reports/TEST-*.xml'
         }
 
         stage('E2E') {
-            sh "npm run pre-e2e"
-            sh "npm run e2e"
+            nodeJS.nvmRun('e2e')
             junit 'tmp/TEST-*.xml'
         }
 
-        stage('Publish NPM snapshot') {
-            def currentVersion = sh(returnStdout: true, script: "npm version | grep \"{\" | tr -s ':'  | cut -d \"'\" -f 4").trim()
-            def newVersion = "${currentVersion}-${buildNumber}"
-            sh "npm version ${newVersion} --no-git-tag-version && npm publish --tag next"
+        if(git.isDevelopBranch() || git.isFeatureBranch()){
+          stage('Publish NPM snapshot') {
+            nodeJS.publishSnapshot('.', env.BUILD_NUMBER, env.BRANCH_NAME)
+          }
         }
 
     } catch (e) {
