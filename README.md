@@ -1,7 +1,9 @@
 # NativeScript Toast Plugin
 
 [![Build Status](https://travis-ci.org/TobiasHennig/nativescript-toast.svg?branch=master)](https://travis-ci.org/TobiasHennig/nativescript-toast)
- [![npm version](https://badge.fury.io/js/nativescript-toast.svg)](http://badge.fury.io/js/nativescript-toast)
+[![npm version](https://badge.fury.io/js/nativescript-toast.svg)](http://badge.fury.io/js/nativescript-toast)
+[![npm downloads](https://img.shields.io/npm/dm/nativescript-toast.svg)](https://www.npmjs.com/package/nativescript-toast)
+[![npm downloads](https://img.shields.io/npm/dt/nativescript-toast.svg)](https://www.npmjs.com/package/nativescript-toast)
 
 > A NativeScript Toast Plugin for Android and iOS apps.
 

@@ -1,80 +1,116 @@
-os: osx
-osx_image: xcode8.3
-sudo: false
-language: objective-c
-
 env:
-  global:
-    - API=19 # Google API 19 by default
-    - TAG=google_apis # Google APIs by default, alternatively use default
-    - ABI=armeabi-v7a # ARM ABI v7a by default
-  matrix:
-    - NODE_VERSION="6" NPM_VERSION="3" TNS_VERSION="2.5.5"
-    - NODE_VERSION="7" NPM_VERSION="3" TNS_VERSION="2.5.5"
-    - NODE_VERSION="7" NPM_VERSION="4" TNS_VERSION="2.5.5"
-    - NODE_VERSION="6" NPM_VERSION="3" TNS_VERSION="3.0.3"
-    - NODE_VERSION="6" NPM_VERSION="3" TNS_VERSION="3.0.3"
-    - NODE_VERSION="7" NPM_VERSION="4" TNS_VERSION="3.0.3"
-    - NODE_VERSION="6" NPM_VERSION="3" TNS_VERSION="3"
-    - NODE_VERSION="6" NPM_VERSION="3" TNS_VERSION="3"
-    - NODE_VERSION="7" NPM_VERSION="4" TNS_VERSION="3"
+ global:
+   - EMULATOR_NAME=test
+   - ANDROID_API_LEVEL=28
+   - ANDROID_BUILD_TOOLS_VERSION=28.0.3
+   - ANDROID_ABI=armeabi-v7a
+   - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
+
+matrix:
+ include:
+   - stage: "Lint"
+     language: node_js
+     os: linux
+     node_js: "10"
+     before_install:
+       - cd publish && npm run setup-dev-env && cd ..
+     script: cd src && npm run ci.tslint && npm run build && cd ../demo && npm run ci.tslint && cd ../demo-angular && npm run ci.tslint
+   - stage: "Webpack and Build"
+     os: osx
+     env:
+       - Webpack="iOS"
+       - Type="VanillaJS"
+     osx_image: xcode10.0
+     language: node_js
+     node_js: "10"
+     jdk: oraclejdk8
+     before_script:
+       - gem install cocoapods
+       - gem install xcodeproj
+       - brew install xcproj
+       - pod repo update
+       - sudo pip install six
+     before_install:
+       - cd publish && npm run setup-dev-env && cd ..
+       - cd src && npm i && cd ..
+     script: cd demo && travis_wait travis_retry npm run build-ios-bundle
+   - os: osx
+     env:
+       - Webpack="iOS"
+       - Type="Angular"
+     osx_image: xcode10.0
+     language: node_js
+     node_js: "10"
+     jdk: oraclejdk8
+     before_script:
+       - gem install cocoapods
+       - gem install xcodeproj
+       - brew install xcproj
+       - pod repo update
+       - sudo pip install six
+     before_install:
+       - cd publish && npm run setup-dev-env && cd ..
+       - cd src && npm i && cd ..
+     script: cd demo-angular && travis_wait travis_retry npm run build-ios-bundle
+   - language: android
+     os: linux
+     env:
+       - Webpack="Android"
+       - Type="VanillaJS"
+     jdk: oraclejdk8
+     before_install:
+       - nvm install 10
+       - cd publish && npm run setup-dev-env && cd ..
+       - cd src && npm i && cd ..
+     script: cd demo && travis_wait travis_retry npm run build-android-bundle
+   - language: android
+     os: linux
+     env:
+       - Webpack="Android"
+       - Type="Angular"
+     jdk: oraclejdk8
+     before_install:
+       - nvm install 10
+       - cd publish && npm run setup-dev-env && cd ..
+       - cd src && npm i && cd ..
+     script: cd demo-angular && travis_wait travis_retry npm run build-android-bundle
+
+android:
+ components:
+   - platform-tools
+   - tools # to install Android SDK tools
+   - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+   - android-$ANDROID_API_LEVEL
+   # For Google APIs
+   - addon-google_apis-google-$ANDROID_API_LEVEL
+   # Google Play Services
+   - extra-google-google_play_services
+   # Support library
+   - extra-android-support
+   # Latest artifacts in local repository
+   - extra-google-m2repository
+   - extra-android-m2repository
+   # Specify at least one system image
+   - sys-img-armeabi-v7a-android-21
+   - sys-img-armeabi-v7a-android-$ANDROID_API_LEVEL
 
 before_install:
-  - export EMULATOR="system-images;android-${API};${TAG};${ABI}" # Used to install/create emulator
-  - export ANDROID_HOME=/usr/local/share/android-sdk
-  - export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
-  - wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
-  - source ~/.nvm/nvm.sh && nvm install $NODE_VERSION && nvm use $NODE_VERSION
-  - PATH="`npm bin`:`npm bin -g`:$PATH"
-  - brew update > /dev/null;
-  - brew install Caskroom/cask/android-sdk
-  # Tools
-  - echo y | sdkmanager 'tools'
-  # Platform tools
-  - echo y | sdkmanager 'platform-tools'
-  # SDKs
-  - echo y | sdkmanager 'platforms;android-25'
-  # build tools
-  - echo y | sdkmanager 'build-tools;25.0.2'
-  # Android System Images, for emulators
-  - echo y | sdkmanager 'system-images;android-24;default;armeabi-v7a'
-  - echo y | sdkmanager 'system-images;android-22;default;armeabi-v7a'
-  - echo y | sdkmanager 'system-images;android-21;default;armeabi-v7a'
-  - echo y | sdkmanager 'system-images;android-19;default;armeabi-v7a'
-  - echo y | sdkmanager 'system-images;android-19;google_apis;armeabi-v7a'
-  # Extras
-  - echo y | sdkmanager 'extras;android;m2repository'
-  - echo y | sdkmanager 'extras;google;google_play_services'
-  - echo y | sdkmanager 'extras;google;m2repository'
-  # google apis
-  - echo y | sdkmanager 'add-ons;addon-google_apis-google-23'
-  - mkdir "$ANDROID_HOME/licenses" || true
-  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
-  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
-  # create and start emulator
-  - echo no | avdmanager create avd --name test -k "$EMULATOR" -f --abi "$ABI" --tag "$TAG"
-  - emulator -avd test -gpu off -skin 768x1280 -no-window &
-  # CocoaPods
-  - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
-  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
-  - pod --version
-  - pod setup --silent
-  - pod repo update --silent
-  # Build Tools
-  - npm install -g npm@$NPM_VERSION
-  - npm install -g nativescript@$TNS_VERSION
-  - tns usage-reporting disable
-  - tns error-reporting disable
-  # Show environment info
-  - node --version
-  - npm --version
-  - xcpretty --version
-  - xcodebuild -version
-  - xcodebuild -showsdks
-  - echo $ANDROID_HOME
+    - sudo pip install --upgrade pip
+    - sudo pip install six
 
-script:
-  - npm run clean
-  - npm run build
-  - npm run test
- # - npm run e2e
+licenses:
+  - ".+"
+
+before_cache:
+   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+
+cache:
+   directories:
+       - .nvm
+       - $HOME/.gradle/caches/
+       - $HOME/.gradle/wrapper/
+
+install:
+   - echo no | npm install -g nativescript
+   - tns usage-reporting disable
+   - tns error-reporting disable

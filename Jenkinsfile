@@ -7,7 +7,8 @@ properties properties: [
 def nodeJS = new de.mare.ci.jenkins.NodeJS()
 def git = new de.mare.ci.jenkins.Git()
 
-node('nativescript') {
+timeout(150) {
+  node('nativescript') {
 
     def workspace = env.WORKSPACE
 
@@ -21,22 +22,39 @@ node('nativescript') {
         }
 
         stage('Build') {
-            nodeJS.nvmRun('clean')
+          nodeJS.nvm("install -g nativescript")
+          dir("publish") {
+            nodeJS.nvmRun("setup-dev-env")
+          }
         }
 
-        stage('Test') {
+        stage('Webpack') {
+          parallel demo: {
+            dir("demo") {
+              nodeJS.nvmRun("clean")
+              nodeJS.nvmRun("build-android-bundle")
+              nodeJS.nvmRun("build-ios-bundle")
+            }
+          }, demoAngular: {
+            dir("demo-angular") {
+              nodeJS.nvmRun("clean")
+              nodeJS.nvmRun("build-android-bundle")
+              nodeJS.nvmRun("build-ios-bundle")
+            }
+          },
+          failFast: true
+        }
+
+        dir("src") {
+          stage('Test') {
             nodeJS.nvmRun('test')
-            junit 'test/android/build/reports/TEST-*.xml'
-        }
+            // junit 'test/android/build/reports/TEST-*.xml'
+          }
 
-        stage('E2E') {
-            nodeJS.nvmRun('e2e')
-            junit 'tmp/TEST-*.xml'
-        }
-
-        if(git.isDevelopBranch() || git.isFeatureBranch()){
-          stage('Publish NPM snapshot') {
-            nodeJS.publishSnapshot('.', env.BUILD_NUMBER, env.BRANCH_NAME)
+          if(git.isDevelopBranch() || git.isFeatureBranch()){
+            stage('Publish NPM snapshot') {
+              nodeJS.publishSnapshot('.', env.BUILD_NUMBER, env.BRANCH_NAME)
+            }
           }
         }
 
@@ -44,4 +62,5 @@ node('nativescript') {
         mail subject: "${env.JOB_NAME} (${env.BUILD_NUMBER}): Error on build", to: 'github@martinreinhardt-online.de', body: "Please go to ${env.BUILD_URL}."
         throw e
     }
+  }
 }
