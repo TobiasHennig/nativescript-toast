@@ -1,1 +1,1 @@
-pod 'Toaster', '~> 2.1.1'
+pod 'SBToaster', '~> 2.1.2'
