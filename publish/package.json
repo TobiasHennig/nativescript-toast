@@ -11,14 +11,12 @@
         "end2end": "npm run setup-dev-env && npm run end2end:demo && npm run end2end:demo-ng",
         "changelog": "cd ../src && conventional-changelog -p angular -i ../CHANGELOG.md -s -r 0",
         "release:pre": "cd ../src && npm run clean && npm run test && cd ../publish && npm run setup-local-package",
-        "release:post": "npm run changelog && npm run release:pre && git add ../src && git add ../CHANGELOG.md && git commit -m 'chore(release): New Release'",
-        "release:major": "npm run release:pre && cd ../src && npm version major && cd ../publish && npm run release:post && git push origin && git push origin --tags && npm run version-and-push",
-        "release:minor": "npm run release:pre && cd ../src && npm version minor && cd ../publish && npm run release:post && git push origin && git push origin --tags && npm run version-and-push",
-        "release:patch": "npm run release:pre && cd ../src && npm version patch && cd ../publish && npm run release:post && git push origin && git push origin --tags && npm run version-and-push",
-        "version-and-push": "git push origin && git push origin --tags && npm run merge-and-publish",
-        "premerge-and-publish": "git checkout master && git merge develop",
-        "merge-and-publish": "mv ../README.md ../src && mv ../LICENSE ../src && cd ../src && npm publish && git reset --hard && git clean -f",
-        "postmerge-and-publish": "git checkout develop"
+        "release:post": "npm run changelog && npm run release:pre && git add ../src && git add ../CHANGELOG.md && git commit -m 'chore(release): New Release' && git push origin && git push origin --tags && npm run version-and-push",
+        "release:major": "npm run release:pre && cd ../src && npm version major && cd ../publish && npm run release:post",
+        "release:minor": "npm run release:pre && cd ../src && npm version minor && cd ../publish && npm run release:post",
+        "release:patch": "npm run release:pre && cd ../src && npm version patch && cd ../publish && npm run release:post",
+        "version-and-push": "git push origin && git push origin --tags && git checkout master && git merge develop && git checkout develop",
+        "merge-and-publish": "mv ../README.md ../src && mv ../LICENSE ../src && cd ../src && npm publish && git reset --hard && git clean -f"
     },
     "devDependencies": {
         "conventional-changelog-cli": "1.3.1",
