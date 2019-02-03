@@ -15,7 +15,7 @@
         "release:major": "npm run release:pre && cd ../src && npm version major && cd ../publish && npm run release:post",
         "release:minor": "npm run release:pre && cd ../src && npm version minor && cd ../publish && npm run release:post",
         "release:patch": "npm run release:pre && cd ../src && npm version patch && cd ../publish && npm run release:post",
-        "version-and-push": "git push origin && git push origin --tags && git checkout master && git merge develop && git checkout develop",
+        "version-and-push": "git push origin && git push origin --tags && git checkout master && git merge develop && git push origin && git checkout develop",
         "merge-and-publish": "mv ../README.md ../src && mv ../LICENSE ../src && cd ../src && npm publish && git reset --hard && git clean -f"
     },
     "devDependencies": {
