@@ -1,6 +1,6 @@
 {
   "name": "nativescript-toast",
-  "version": "1.4.6",
+  "version": "2.0.0",
   "description": "A NativeScript Toast Plugin for Android and iOS apps.",
   "main": "toast",
   "typings": "index.d.ts",

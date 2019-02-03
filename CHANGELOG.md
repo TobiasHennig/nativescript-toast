@@ -1,3 +1,14 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/TobiasHennig/nativescript-toast/compare/v1.4.6...v2.0.0) (2019-02-03)
+
+
+### Features
+
+* **Swift 4:** Switch to SBToaster to support Swift 4 ([b1a6044](https://github.com/TobiasHennig/nativescript-toast/commit/b1a6044)), closes [#36](https://github.com/TobiasHennig/nativescript-toast/issues/36) [#34](https://github.com/TobiasHennig/nativescript-toast/issues/34)
+* **TNS5:** Support for NativeScript 5 ([614054b](https://github.com/TobiasHennig/nativescript-toast/commit/614054b))
+
+
+
 <a name="1.4.6"></a>
 ## [1.4.6](https://github.com/TobiasHennig/nativescript-toast/compare/v1.4.5...v1.4.6) (2017-07-13)
 
