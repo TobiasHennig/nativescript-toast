@@ -9,7 +9,7 @@
         }
     },
     "scripts": {
-        "clean": "npm i del-cli && del -f platforms node_modules hooks target && tns install && git checkout package.json && git checkout tsconfig.json",
+        "clean": "npm i del-cli && del -f platforms hooks target && tns install && git checkout package.json && git checkout tsconfig.json",
         "ns-bundle": "ns-bundle",
         "appium": "nativescript-dev-appium",
         "build.plugin": "cd ../src && npm run build",

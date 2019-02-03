@@ -4,7 +4,9 @@
   "readme": "NativeScript Application",
   "repository": "<fill-your-repository-here>",
   "scripts": {
-    "clean": "npm i del-cli && del -f platforms node_modules hooks target && tns install && git checkout package.json && git checkout tsconfig.json",
+    "preclean": "npm i del-cli",
+    "clean": "del -f platforms target package-lock.json && npm install",
+    "postclean":"git checkout package-lock.json && git checkout package.json && git checkout tsconfig.json",
     "tsc": "tsc",
     "ns-bundle": "ns-bundle",
     "build.plugin": "cd ../src && npm run build",
@@ -39,6 +41,7 @@
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
     "del-cli": "^1.1.0",
+    "nativescript-angular": "^7.2.0",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-toast": "*",
     "nativescript-ui-core": "*",
@@ -62,12 +65,11 @@
     "karma": "^3.0.0",
     "karma-nativescript-launcher": "^0.4.0",
     "lazy": "1.0.11",
-    "nativescript-angular": "^7.2.0",
     "nativescript-css-loader": "~0.26.1",
     "nativescript-dev-appium": "^4.0.9",
     "nativescript-dev-typescript": "^0.7.9",
     "nativescript-dev-webpack": "^0.19.1",
     "tslint": "~5.11.0",
-    "typescript": "^3.1.1"
+    "typescript": "3.1.1"
   }
 }

@@ -11,7 +11,7 @@
     "tsc": "tsc",
     "ngc": "node --max-old-space-size=8192 ./node_modules/.bin/ngc",
     "tslint": "tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**'",
-    "test": "cd ../demo-angular && rm -rf platforms node_modules hooks && tns plugin add ../src && tns install",
+    "test": "echo Nothing to do",
     "pree2e": "cd ../demo-angular/ && tns install && tns platform add ios && tns platform add android && tns build ios && tns build android",
     "e2e": "cd ../demo-angular/ && tns test ios --emulator --justlaunch",
     "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**'",
