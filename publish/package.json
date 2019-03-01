@@ -4,7 +4,7 @@
     "description": "Publish helper",
     "scripts": {
         "create-lib-scripts": "npm install --ignore-scripts && webpack --config scripts/webpack.config.js scripts/postinstall.js ../src/lib/postinstall.js && cd ../src && rm -rf node_modules/ && npm install --ignore-scripts",
-        "setup-local-package": "rm -rf package/* && ./pack.sh && cd ../demo && npm i ../publish/package/*.tgz --ignore-scripts --no-save && npm install && cd ../demo-angular && npm i ../publish/package/*.tgz --ignore-scripts --no-save && npm install",
+        "setup-local-package": "rm -rf package/* && ./pack.sh && cd ../demo && npm install && npm i ../publish/package/*.tgz --ignore-scripts --no-save && cd ../demo-angular && npm install && npm i ../publish/package/*.tgz --ignore-scripts --no-save",
         "setup-dev-env": "npm run create-lib-scripts && npm run setup-local-package",
         "end2end:demo": "cd ../demo && rm -rf hooks/ node_modules/ platforms/ && npm run build.plugin && npm i && npm run build-android-bundle && npm run build-ios-bundle && tns test android --justlaunch && tns test ios --emulator --justlaunch",
         "end2end:demo-ng": "cd ../demo-angular && rm -rf hooks/ node_modules/ platforms/ && npm run build.plugin && npm i && npm run build-android-bundle",

@@ -62,3 +62,5 @@ demo/hooks/
 demo/lib/
 demo/node_modules/
 demo/platforms/
+publish/node_modules/
+publish/platforms/
