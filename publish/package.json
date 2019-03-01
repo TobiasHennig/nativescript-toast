@@ -16,10 +16,10 @@
         "release:minor": "npm run release:pre && cd ../src && npm version minor && cd ../publish && npm run release:post",
         "release:patch": "npm run release:pre && cd ../src && npm version patch && cd ../publish && npm run release:post",
         "version-and-push": "git push origin && git push origin --tags && git checkout master && git merge develop && git push origin && git checkout develop",
-        "merge-and-publish": "mv ../README.md ../src && mv ../LICENSE ../src && cd ../src && npm publish && git reset --hard && git clean -f"
+        "merge-and-publish": "mv ../README.md ../src && mv ../LICENSE ../src && cd ../src && npm publish && git reset --hard && git clean -f && npm run setup-dev-env"
     },
     "devDependencies": {
-        "conventional-changelog-cli": "1.3.1",
+        "conventional-changelog-cli": "^2.0.11",
         "ncp": "^2.0.0",
         "prompt-lite": "~0.1.0",
         "rimraf": "^2.5.0",

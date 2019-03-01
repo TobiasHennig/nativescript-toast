@@ -97,6 +97,8 @@ android:
 before_install:
     - sudo pip install --upgrade pip
     - sudo pip install six
+    - sudo gem uninstall cocoapods
+    - sudo gem install cocoapods -v 1.5.3
 
 licenses:
   - ".+"
