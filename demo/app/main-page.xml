@@ -25,10 +25,7 @@ https://docs.nativescript.org/ui/components.
     class names available for styling your app at https://docs.nativescript.org/ui/theme.
     -->
     <StackLayout class="p-20">
-        <Label text="Tap the button" class="h1 text-center"/>
-        <Button text="TAP" tap="{{ onTap }}" automationText="tapButton" class="btn btn-primary btn-active"/>
-        <Label text="{{ message }}"  automationText="messageLabel" class="h2 text-center" textWrap="true"/>
-        <Label text="app URL:" class="h1 text-center"/>
-        <Label text="{{ appURL }}" class="h2 text-center" textWrap="true"/>
+        <Button text="Make a toast" tap="{{ showToast }}" automationText="tapButton" class="btn btn-primary btn-active"/>
+        <Button text="Hide the toast" tap="{{ hideToast }}" automationText="tapButton" class="btn btn-active"/>
     </StackLayout>
 </Page>

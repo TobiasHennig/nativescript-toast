@@ -1,43 +1,20 @@
 import { Observable } from 'data/observable';
+import * as Toast from "nativescript-toast";
 
 export class HelloWorldModel extends Observable {
-
-    private _counter: number;
-    private _message: string;
-    private _appURL: string;
+    private toast: Toast.Toast = null;
 
     constructor() {
         super();
-
-        // Initialize default values.
-        this._counter = 42;
-        this.updateMessage();
     }
 
-    get appURL(): string {
-        return this._appURL;
-    }
-    get message(): string {
-        return this._message;
+
+    public showToast() {
+        this.toast = Toast.makeText('Happy to create a toast');
+        this.toast.show();
     }
 
-    set message(value: string) {
-        if (this._message !== value) {
-            this._message = value;
-            this.notifyPropertyChange('message', value);
-        }
-    }
-
-    public onTap() {
-        this._counter--;
-        this.updateMessage();
-    }
-
-    private updateMessage() {
-        if (this._counter <= 0) {
-            this.message = 'Hoorraaay! You unlocked the NativeScript clicker achievement!';
-        } else {
-            this.message = `${this._counter} taps left`;
-        }
+    public hideToast() {
+        this.toast.cancel();
     }
 }

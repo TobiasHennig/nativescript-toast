@@ -42,7 +42,7 @@ var Toast = require("nativescript-toast");
 
 // ...
 
-var toast = Toast.makeText("Hello World");
+let toast = Toast.makeText("Hello World");
 toast.show();
 ```
 Or via import:
@@ -52,7 +52,7 @@ import * as Toast from 'nativescript-toast';
 
 // ...
 
-var toast = Toast.makeText("Hello World");
+let toast = Toast.makeText("Hello World");
 toast.show();
 ```
 
