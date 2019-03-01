@@ -51,11 +51,11 @@ timeout(150) {
             // junit 'test/android/build/reports/TEST-*.xml'
           }
 
-          if(git.isDevelopBranch() || git.isFeatureBranch()){
+          //if(git.isDevelopBranch() || git.isFeatureBranch()){
             stage('Publish NPM snapshot') {
               nodeJS.publishSnapshot('.', env.BUILD_NUMBER, env.BRANCH_NAME)
             }
-          }
+         // }
         }
 
     } catch (e) {
