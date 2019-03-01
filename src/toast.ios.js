@@ -6,7 +6,7 @@ function makeText(text, duration) {
         throw new Error("The `text` parameter is missing.");
     }
     var d = (typeof (duration) === "string" && duration[0] === "l") ? 3.5 : 2;
-    return Toast.alloc().initWithTextDelayDuration(text,0,d);
+    return Toast.text(text,0,d);
 }
 
 exports.makeText = makeText;
