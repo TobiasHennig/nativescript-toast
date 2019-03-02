@@ -1,6 +1,4 @@
-use_frameworks!
-
-pod 'Toastr', '~> 1.0.1'
+pod 'SBToaster', '~> 2.1.2'
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|

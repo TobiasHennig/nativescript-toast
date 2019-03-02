@@ -32,7 +32,7 @@
     "repository": "<fill-your-repository-here>",
     "dependencies": {
         "nativescript-theme-core": "~1.0.4",
-        "nativescript-toast": "*",
+        "nativescript-toast": "file:../publish/package/nativescript-toast-2.0.0.tgz",
         "tns-core-modules": "~5.1.0"
     },
     "devDependencies": {
