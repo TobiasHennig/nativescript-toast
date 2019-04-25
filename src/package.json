@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "git checkout ../demo-angular/package.json && rm -rf node_modules target tmp && mkdir -p tmp && mkdir -p tmp/angular && cd ../demo-angular/ && rm -rf node_modules hooks platforms",
     "postclean": "npm i",
-    "build": "echo Nothing to do",
+    "build": "npm run ngc",
     "tsc": "tsc",
     "ngc": "node --max-old-space-size=8192 ./node_modules/.bin/ngc",
     "tslint": "tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**'",
