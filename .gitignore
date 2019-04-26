@@ -50,12 +50,14 @@ tmp/
 publish/package/
 publish/node_modules/
 src/node_modules/
+demo-angular/package-lock.json
 demo-angular/app/*.js*
 demo-angular/app/tests/*.js*
 demo-angular/hooks/
 demo-angular/lib/
 demo-angular/node_modules/
 demo-angular/platforms/
+demo/package-lock.json
 demo/app/*.js*
 demo/app/tests/*.js*
 demo/hooks/
