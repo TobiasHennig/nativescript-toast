@@ -5,8 +5,8 @@
   "repository": "<fill-your-repository-here>",
   "scripts": {
     "preclean": "npm i del-cli",
-    "clean": "del -f platforms target package-lock.json && npm install",
-    "postclean": "git checkout package-lock.json && git checkout package.json && git checkout tsconfig.json",
+    "clean": "del -f platforms target && npm install",
+    "postclean": "git checkout package.json && git checkout tsconfig.json",
     "tsc": "tsc",
     "ns-bundle": "ns-bundle",
     "build.plugin": "cd ../src && npm run build",
