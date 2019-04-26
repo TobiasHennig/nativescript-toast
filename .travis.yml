@@ -1,10 +1,11 @@
 env:
  global:
-   - EMULATOR_NAME=test
-   - ANDROID_API_LEVEL=28
-   - ANDROID_BUILD_TOOLS_VERSION=28.0.3
-   - ANDROID_ABI=armeabi-v7a
-   - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
+    - SWIFT_VERSION=4
+    - EMULATOR_NAME=test
+    - ANDROID_API_LEVEL=28
+    - ANDROID_BUILD_TOOLS_VERSION=28.0.3
+    - ANDROID_ABI=armeabi-v7a
+    - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
 
 matrix:
  include:
