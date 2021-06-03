@@ -1,6 +1,6 @@
 /*global require, exports, android*/
 
-var application = require("application");
+var application = require("@nativescript/core/application");
 
 function makeText(text, duration) {
     "use strict";
